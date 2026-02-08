@@ -14,6 +14,6 @@ __Important Functions:__
     - Search at beginning of line by using ```^``` before the string
 - ```history``` to view command history
 - ```man``` manual
-- ```wc -l``` count
+- ```wc -l``` count lines in file
 - ```less``` to open viewer where you can scroll through file
 - If you hit tab twice you can see all possible autocompletes
