@@ -17,3 +17,17 @@ __Important Functions:__
 - ```wc -l``` count lines in file
 - ```less``` to open viewer where you can scroll through file
 - If you hit tab twice you can see all possible autocompletes
+
+
+for, do, and done
+
+```
+for name in *.fastq
+> do
+> echo ${name}
+> done
+```
+```
+uniq -c
+sort
+```
