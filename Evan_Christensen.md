@@ -1,5 +1,5 @@
 # Evan Christensen Bioinformatics Notebook
-##Navigation & File System
+## Navigation & File System
 __Commands:__
 - ```pwd``` — present working directory
 - ```ls``` — list contents
@@ -17,7 +17,7 @@ ls -lh
 cd ~/gen711-811
 cd ../
 ```
-##File Viewing & Inspection
+## File Viewing & Inspection
 __Commands:__
 - ```head``` — first lines
 - ```tail``` — last lines
@@ -36,7 +36,7 @@ __Key Concept:__
 ```Bash
 echo $(($(wc -l < file.fastq)/4))
 ```
-##File Management
+## File Management
 __Commands:__
 - ```cp``` — copy files
 - ```mv``` — move/rename
@@ -50,12 +50,12 @@ mv *.fastq backup/
 mkdir results
 rm -r backup
 ```
-##File Size & Disk Usage
+## File Size & Disk Usage
 ```Bash
 ls -lh
 du -sh *
 ```
-##Permissions
+## Permissions
 __Commands:__
 - ```ls -l``` — view permissions
 - ```chmod``` — change permissions
@@ -75,7 +75,7 @@ __Key Concepts:__
     - ```r``` = read
     - ```w``` = write
     - ```x``` = execute
-##Searching & Pattern Matching
+## Searching & Pattern Matching
 __Command:__
 - ```grep``` — search within files
     - ```-i``` — ignore case
@@ -96,18 +96,18 @@ __Beginning of line search:__
 ```Bash
 grep '^@' file.fastq
 ```
-##Working with FASTQ Files
+## Working with FASTQ Files
 __Structure:__
 1. Header (```@```)
 2. Sequence
 3. ```+```
 4. Quality scores
-##Extract Components
+## Extract Components
 ```Bash
 sed -n '1~4p' file.fastq   # headers
 sed -n '2~4p' file.fastq   # sequences
 ```
-##Convert FASTQ → FASTA
+## Convert FASTQ → FASTA
 __Preview:__
 ```Bash
 grep '^@' -A1 --no-group-separator file.fastq | head
@@ -116,7 +116,7 @@ __Convert:__
 ```Bash
 grep '^@' -A1 --no-group-separator file.fastq | sed 's/^@/>/' > file.fasta
 ```
-##Find Bad Reads
+## Find Bad Reads
 __≥10 Ns:__
 ```Bash
 grep -E 'N{10,}' file.fastq -B1 -A2 > bad-reads.fastq
@@ -129,7 +129,7 @@ __≥15 Ns count:__
 ```Bash
 grep -c 'N\{15,\}' *.fastq
 ```
-##Pipes & Redirection
+## Pipes & Redirection
 - ```>``` overwrite output
 - ```>>``` append output
 - ```|``` pass output to next command
@@ -141,13 +141,13 @@ command1 | command2
 
 cat file | grep pattern | wc -l
 ```
-##Sorting & Counting
+## Sorting & Counting
 ```Bash
 sort file.txt
 uniq -c file.txt
 sort file.txt | uniq -c | sort -nr
 ```
-##Loops
+## Loops
 __Basic Loop:__
 ```Bash
 for name in *.fastq
@@ -163,11 +163,11 @@ do
   echo $base
 done
 ```
-##Filename Handling
+## Filename Handling
 ```Bash
 basename file.txt .txt
 ```
-##Conda Environments
+## Conda Environments
 __Commands:__
 ```Bash
 conda create -n myenv fastqc
@@ -175,11 +175,11 @@ conda activate myenv
 conda deactivate
 which fastqc
 ```
-##FASTQC
+## FASTQC
 ```Bash
 fastqc *.fastq.gz
 ```
-##Trimmomatic
+## Trimmomatic
 __Basic Structure:__
 ```Bash
 trimmomatic PE input_1.fastq input_2.fastq \
@@ -187,26 +187,26 @@ output_1P.fastq output_1U.fastq \
 output_2P.fastq output_2U.fastq \
 SLIDINGWINDOW:4:20 MINLEN:25
 ```
-##Convert to FASTA
+## Convert to FASTA
 ```Bash
 grep '^@' -A1 --no-group-separator Sample1.fastq | sed 's/^@/>/' > Sample1.fasta
 ```
-##Count Reads with Ns
+## Count Reads with Ns
 ```Bash
 grep -c 'N\{15,\}' *.fastq
 ```
-##Specific line Extraction
+## Specific line Extraction
 ```Bash
 head -n 100 Sample1.fasta | tail -n 1
 ```
-##Checksums
+## Checksums
 ```Bash
 md5sum Sample1.fasta
 md5sum Sample1.fasta > my_md5sums.txt
 md5sum Sample2.fasta >> my_md5sums.txt
 echo "Your Name" >> my_md5sums.txt
 ```
-##Extra Commands
+## Extra Commands
 ```
 file filename
 stat filename
